@@ -1,11 +1,48 @@
 $(function() {
-	$.fn.extend({
-		dialog: function(npc, content, type) {
-			// To do: Dynamic dialog windows
+	var fakeJson = {
+		dialog: {
+			test: {
+				type: "blueDialog",
+				drag: {
+					enabled: true,
+					height: 14,
+					left: 0,
+					top: -28
+				},
+				npc: {
+					name: "mapleadmin2",
+					frames: {
+						0: {
+							delay: 2350
+						},
+						1: {
+							delay: 150
+						}
+					}
+				},
+				html: "Hello, world!",
+				controls: {
+					0: {
+						real: "end-chat",
+						position: "left",
+						type: "close"
+					}
+				}
+			}
 		},
+		npcChat: {
+			mapleadmin: {
+				0: "Hello! Click me?",
+				1: "This is a test~",
+				2: "Tryst was here! This should hopefully support multi-line chat messages!"
+			}
+		}
+	}
+
+	$.fn.extend({
 		life: function() {
 			var $lifeContainer = $(this),
-				$lives = $lifeContainer.children(),
+				$lives = $lifeContainer.children('[data-anim]'),
 				current = 0,
 				count = 0,
 				delays = [];
@@ -38,11 +75,81 @@ $(function() {
 		},
 		openDialog: function() {
 			var rel = $(this).data('dialog-rel'),
-				$dialog = $('[data-dialog="' + rel + '"]');
+				dialog = fakeJson.dialog[rel],
+				$dialogContainer = $('.dialogContainer'),
+				$dialogContainerInner = $dialogContainer.children('div'),
+				$dialog = $('<article />', {
+					'class': dialog.type
+				}).appendTo($dialogContainerInner),
+				$npcContainer = $('<div />')
+					.appendTo($dialog)
+					.attr('data-npc', dialog.npc.name),
+				$controls = $('<div />', {
+					'class': "controls"
+				}).appendTo($dialog);
 
-			$('.dialog, .blueDialog').not($dialog).hide();
+			// Generate drag control
+			if (dialog.drag.enabled) {
+				$('<div/>', {
+					'class': "drag"
+				})
+					.appendTo($dialog)
+					.css({
+						height: dialog.drag.height,
+						left: dialog.drag.left,
+						top: dialog.drag.top
+					})
+			}
+
+			// Generate dialog NPC
+			for (var npc in dialog.npc.frames) {
+				$('<div/>')
+					.appendTo($npcContainer)
+					.attr('data-anim', npc)
+					.attr('data-delay', dialog.npc.frames[npc].delay);
+			}
+
+			// Generate the dialog content
+			$('<div/>', {
+				'class': "content",
+				'html': dialog.html
+			}).appendTo($dialog);
+
+			// Generate the dialog controls
+			for (var control in dialog.controls) {
+				$('<a/>', {
+					'class': dialog.controls[control].real,
+					'href': "javascript:void(0)"
+				})
+					.appendTo($controls)
+					.attr('data-button-type', dialog.controls[control].type);
+			}
+
+			// Remove any existing dialog
+			$dialogContainerInner.children().not($dialog).remove();
+
+			// Make dialog container visible
 			$('.dialogContainer').css({display: 'table'});
+
+			// Make dialog visible
 			$dialog.css({display: 'table'});
+		},
+		chat: function(current, rel) {
+			var $npc = $(this),
+				$chat = $npc.find('.chat'),
+				rel = rel || $npc.data('npc'),
+				chat = fakeJson.npcChat[rel],
+				current = current || 0,
+				next = current + 1 === Object.keys(chat).length ? 0 : current + 1;
+
+			$chat.text(chat[current]).show();
+
+			setTimeout(function() {
+				$chat.hide();
+				setTimeout(function() {
+					$npc.chat(next, rel);
+				}, Math.round(Math.random() * 5000));
+			}, 4000);
 		}
 	});
 
@@ -56,6 +163,7 @@ $(function() {
 		};
 
 	$('[data-npc="mapleadmin"]').life();
+	$('[data-npc="mapleadmin"]').chat();
 	$('[data-npc="mapleadmin2"]').life();
 
 	$('[data-has-dialog]')

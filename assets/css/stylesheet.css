@@ -234,8 +234,36 @@ body > figure {
 }
 
 [data-npc] {
-	overflow: hidden;
 	position: absolute;
+}
+
+[data-npc] .chat {
+	background: #eee;
+	border: 1px solid #000;
+	box-shadow: inset 0 0 4px 2px #99aacc;
+	border-radius: 10px;
+	color: #9E3939;
+	display: none;
+	font-size: 13px;
+	height: auto;
+	line-height: 20px;
+	padding: 8px;
+	position: absolute;
+	left: -100%;
+	bottom: calc(100% + 20px);
+	width: 120px;
+}
+
+[data-npc] .chat:after {
+	background-image:
+		url(../i/chat/0-arrow.png);
+	content: '';
+	display: block;
+	height: 13px;
+	position: absolute;
+	bottom: -8px;
+	left: 50%;
+	width: 13px;
 }
 
 [data-npc] [data-anim] {
