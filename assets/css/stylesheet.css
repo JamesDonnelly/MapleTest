@@ -1,0 +1,277 @@
+:root, html, body {
+	font: 14px/18px 'Open Sans', sans-serif;
+	height: 100%;
+	height: 100vh;
+	min-height: 600px;
+	min-width: 600px;
+	overflow: hidden;
+	margin: 0;
+}
+
+.dialog [data-npc]:hover,
+.dialog [data-npc]:active,
+.blueDialog [data-npc]:hover,
+.blueDialog [data-npc]:active,
+.controls a:hover {
+	cursor: url(../i/cursor/0.png), default;
+}
+
+[data-npc]:hover,
+[data-quest]:hover {
+	cursor: url(../i/cursor/13-0.png), default;
+}
+
+[data-npc]:active,
+[data-quest]:active,
+.controls a:active {
+	cursor: url(../i/cursor/13-1.png), pointer;
+}
+
+body {
+	background-image:
+		url(../i/notice/BetaEdition.png),
+		url(../i/bg/grassySoil-6.img.png),
+		url(../i/bg/grassySoil-4.img.png),
+		url(../i/bg/grassySoil-10.img.png),
+		url(../i/bg/grassySoil-9.img.png);
+	background-repeat:
+		no-repeat,
+		no-repeat,
+		no-repeat,
+		repeat-x,
+		repeat;
+	background-position:
+		calc(100% - 10px) 10px,
+		0 bottom,
+		1024px bottom,
+		0 0,
+		0 bottom;
+	cursor: url(../i/cursor/0.png), auto;
+}
+
+body > figure {
+	background-image:
+		url(../i/fg/grassySoil-obj-9.png),
+		url(../i/tile/enH0-1.png),
+		url(../i/tile/enH0-2.png),
+		url(../i/tile/enH1-1.png),
+		url(../i/tile/enH1-2.png),
+		url(../i/tile/edD-0.png),
+		url(../i/tile/edU-0.png),
+		url(../i/tile/edD-0.png),
+		url(../i/tile/edU-0.png);
+	background-repeat:
+		no-repeat,
+		no-repeat,
+		no-repeat,
+		no-repeat,
+		no-repeat,
+		no-repeat,
+		no-repeat;
+	background-position:
+		78px calc(100% - 54px),
+		30px calc(100% - 27px),
+		120px calc(100% - 27px),
+		30px bottom,
+		120px calc(100% - 1px),
+		6px calc(100% - 8px),
+		0 calc(100% - 27px),
+		184px calc(100% - 8px),
+		180px calc(100% - 27px);
+	height: 400px;
+	margin: 0;
+	position: absolute;
+	bottom: 300px;
+	right: 200px;
+	width: 242px;
+}
+
+.dialogContainer {
+	background: transparent;
+	display: none;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 990;
+}
+
+.dialogContainer div {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.blueDialog {
+	background-image: url(../i/dialog/UtilDlgEx-c.png);
+	background-repeat: repeat-y;
+	display: none;
+	height: auto;
+	min-height: 100px;
+	margin: 0 auto;
+	padding: 0 14px 0 10px;
+	position: relative;
+	width: 495px;
+	z-index: 991;
+}
+
+.blueDialog, .blueDialog:before, .blueDialog:after {
+	background-position: 0 0;
+}
+
+.blueDialog:before, .blueDialog:after {
+	background-repeat: no-repeat;
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 519px;
+}
+
+.blueDialog:after {
+	background-image: url(../i/dialog/UtilDlgEx-s.png);
+	height: 44px;
+	bottom: -44px;
+}
+
+.blueDialog:before {
+	background-image: url(../i/dialog/UtilDlgEx-t.png);
+	height: 28px;
+	top: -28px;
+}
+
+.blueDialog [data-npc] {
+	display: table-cell;
+	position: relative;
+	height: 100%;
+	width: 138px;
+}
+
+.blueDialog [data-npc] [data-anim] {
+	background-position: center center;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.blueDialog .content {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	display: table-cell;
+	padding: 0 20px;
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;  
+	width: 356px;
+}
+
+.blueDialog .controls {
+	display: table-row;
+	height: 20px;
+	line-height: 20px;
+	position: absolute;
+	bottom: -40px;
+	left: 10px;
+	width: 499px;
+	z-index: 999;
+}
+
+.controls a.end-chat {
+	background-image: url(../i/dialog/UtilDlgEx-BtClose-normal.png);
+	display: inline-block;
+	height: 16px;
+	width: 91px;
+}
+.controls a.end-chat:hover {
+	background-image: url(../i/dialog/UtilDlgEx-BtClose-mouseOver.png);
+}
+.controls a.end-chat:active {
+	background-image: url(../i/dialog/UtilDlgEx-BtClose-pressed.png);
+}
+
+.dialog {
+	background-image:
+		url(../i/dialog/bossAni-backgrnd2.png),
+		url(../i/dialog/bossAni-backgrnd.png);
+	background-repeat:
+		no-repeat,
+		no-repeat;
+	background-position:
+		6px 22px,
+		0 0;
+	display: none;
+	height: 193px;
+	margin: 200px auto;
+	position: relative;
+	width: 519px;
+}
+
+.dialog p {
+	color: blue;
+	display: table-cell;
+	margin: 0;
+	overflow: hidden;
+	padding: 40px 20px 50px 154px;
+	vertical-align: middle;
+}
+
+.dialog [data-npc] {
+	top: 50px;
+	left: 50px;
+}
+
+[data-npc] {
+	overflow: hidden;
+	position: absolute;
+}
+
+[data-npc] [data-anim] {
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	opacity: 0;
+}
+
+[data-npc] [data-anim="0"] {
+	opacity: 1;
+}
+
+[data-npc="mapleadmin"],
+[data-npc="mapleadmin2"] {
+	height: 69px;
+	width: 46px;
+}
+
+[data-npc="mapleadmin"] {
+	bottom: 54px;
+	left: 26px;
+}
+
+[data-npc="mapleadmin"] [data-anim],
+[data-npc="mapleadmin2"] [data-anim] {
+	height: 69px;
+	width: 46px;
+}
+
+[data-npc="mapleadmin"] [data-anim="0"],
+[data-npc="mapleadmin2"] [data-anim="0"] {
+	background-image:
+		url(../i/npc/9900000-stand-0.png);
+}
+
+[data-npc="mapleadmin"] [data-anim="1"],
+[data-npc="mapleadmin2"] [data-anim="1"] {
+	background-image:
+		url(../i/npc/9900000-stand-1.png);
+}
+
+main > section {
+
+}
