@@ -8,6 +8,10 @@
 	margin: 0;
 }
 
+input, textarea, select, button {
+	font: 14px/18px 'Open Sans', sans-serif;
+}
+
 *:active {
 	cursor: url(../i/cursor/12.png), pointer;
 }
@@ -16,18 +20,25 @@
 .dialog [data-npc]:active,
 .blueDialog [data-npc] [data-anim]:hover,
 .blueDialog [data-npc] [data-anim]:active,
-.controls a:hover {
+.controls a:hover,
+label {
 	cursor: url(../i/cursor/0.png), default;
 }
 
 [data-npc] [data-anim]:hover,
-[data-quest]:hover {
+[data-quest]:hover,
+input[type="submit"],
+input[type="checkbox"],
+#signup a {
 	cursor: url(../i/cursor/13-0.png), default;
 }
 
 [data-npc] [data-anim]:active,
 [data-quest]:active,
-.controls a:active {
+.controls a:active,
+input[type="submit"]:active,
+input[type="checkbox"]:active,
+#signup a:active {
 	cursor: url(../i/cursor/13-1.png), pointer;
 }
 
@@ -90,7 +101,7 @@ body > figure {
 	width: 242px;
 }
 
-.minimap {
+#minimap {
 	background-image:
 		url(../i/ui/MiniMap-BtMin-disabled-0.png),
 		url(../i/ui/MiniMap-BtMax-disabled-0.png),
@@ -120,10 +131,10 @@ body > figure {
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-    z-index: 989;
+    z-index: 500;
 }
 
-.minimap:before, .minimap:after {
+#minimap:before, #minimap:after {
 	background-repeat: no-repeat;
 	content: '';
 	height: 20px;
@@ -132,22 +143,150 @@ body > figure {
 	width: 6px;
 }
 
-.minimap:before {
+#minimap:before {
 	background-image: url(../i/ui/MiniMap-Min-w.png);
 	background-position: left, 0;
 	left: -6px;
 }
 
-.minimap:after {
+#minimap:after {
 	background-image: url(../i/ui/MiniMap-Min-e.png);
 	background-position: right, 0;
 	right: -6px;
 }
 
-.minimap .drag {
+#minimap .drag {
 	height: 20px;
 	position: absolute;
 	width: 100%;
+}
+
+#signup {
+	background-image: url(../i/ui/Trunk-backgrnd.png);
+	color: #fff;
+	height: 330px;
+	position: absolute;
+	top: 100px;
+	left: 100px;
+	width: 465px;
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+	z-index: 600;
+}
+
+#signup .logo,
+#signup form.signup,
+#signup form.login {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 20px;
+	position: absolute;
+	width: 232px;
+}
+
+#signup .logo {
+	color: #777;
+	height: 100px;
+	line-height: 60px;
+	top: 0;
+	right: 0;
+	text-align: center;
+}
+
+#signup form.signup {
+	height: 330px;
+	top: 0;
+	left: 0;
+}
+
+#signup a {
+	color: #fff;
+	text-decoration: none;
+}
+
+#signup h2 {
+	display: block;
+	font-weight: 400;
+	margin: 5px 0 20px 0;
+	text-align: center;
+	width: 100%;
+}
+
+#signup label {
+	display: block;
+	color: #ddd;
+	font-size: 13px;
+	margin: 10px 0;
+	text-align: center;
+}
+
+#signup input[type="text"],
+#signup input[type="password"],
+#signup input[type="email"],
+#signup input[type="submit"] {
+	background: rgba(0, 0, 0, 0.5);
+	border: 1px solid #555;
+	border-radius: 8px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #fff;
+	font-size: 14px;
+	display: block;
+	height: 32px;
+	line-height: 24px;
+	margin: 10px 0;
+	padding: 4px 8px;
+	width: 100%;
+}
+
+#signup form.signup input[type="submit"] {
+	background: #137B9C;
+	border: 1px solid #137B9C;
+}
+
+#signup form.signup input[type="submit"]:hover,
+#signup form.signup input[type="submit"]:focus {
+	background: #1B9CC5;
+	border: 1px solid #1B9CC5;
+}
+
+#signup form.signup input[type="submit"]:active {
+	background: #0D4F64;
+	border: 1px solid #137B9C;
+}
+
+#signup input[type="checkbox"] {
+	margin: 0;
+	vertical-align: -12%;
+}
+
+#signup input {
+	margin: 10px 0;
+}
+
+#signup form.login {
+	height: 230px;
+	bottom: 0;
+	right: 0;
+}
+
+#signup form.login input[type="submit"] {
+	background: #4A9C13;
+	border: 1px solid #4A9C13;
+}
+
+#signup form.login input[type="submit"]:hover,
+#signup form.login input[type="submit"]:focus {
+	background: #54B314;
+	border: 1px solid #54B314;
+}
+
+#signup form.login input[type="submit"]:active {
+	background: #3A7711;
+	border: 1px solid #4A9C13;
 }
 
 .dialogContainer {
