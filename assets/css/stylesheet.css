@@ -140,6 +140,14 @@ body > figure {
 	top: -28px;
 }
 
+.blueDialog .drag {
+	height: 28px;
+	position: absolute;
+	top: -28px;
+	left: 0;
+	width: 519px;
+}
+
 .blueDialog [data-npc] {
 	display: table-cell;
 	position: relative;

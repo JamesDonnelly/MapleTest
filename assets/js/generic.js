@@ -46,6 +46,15 @@ $(function() {
 		}
 	});
 
+	var drag = {
+			enabled: false,
+			$elem: null,
+			offX: 0,
+			offY: 0,
+			initialX: 0,
+			initialY: 0
+		};
+
 	$('[data-npc="mapleadmin"]').life();
 	$('[data-npc="mapleadmin2"]').life();
 
@@ -53,9 +62,52 @@ $(function() {
 		.not('[data-has-dialog="false"], [data-has-dialog="0"]')
 		.on('click', function() { $(this).openDialog() });
 
-	$('.end-chat').on('click', function(e) {
+	$('body').on('click', 'a.end-chat', function(e) {
 		e.preventDefault();
 
 		$('.dialog, .dialogContainer').hide();
+	});
+
+	$('body').on('mousedown', '.drag', function(e) {
+		drag.enabled = true;
+		drag.$elem = $(this).parent();
+
+		var elementOffsetX = drag.$elem.offset().left,
+			elementOffsetY = drag.$elem.offset().top;
+
+		drag.initialX = drag.$elem.position().left;
+		drag.initialY = drag.$elem.position().top;
+
+		drag.$elem.css({
+			position: 'fixed',
+			left: elementOffsetX,
+			top: elementOffsetY
+		});
+
+		drag.offX = elementOffsetX - e.pageX;
+		drag.offY = elementOffsetY - e.pageY;
+	});
+
+	$('body').on('mouseup', function() {
+		if (!drag.enabled)
+			return;
+
+		drag.enabled = false;
+		drag.$elem = null;
+	});
+
+	$('body').on('mousemove', function(e) {
+		if (!drag.enabled)
+			return;
+
+		var x = e.pageX,
+			y = e.pageY,
+			posX = x + drag.offX,
+			posY = y + drag.offY;
+
+		drag.$elem.css({
+			left: posX,
+			top: posY
+		})
 	});
 });
