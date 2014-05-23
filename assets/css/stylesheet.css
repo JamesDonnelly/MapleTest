@@ -173,9 +173,9 @@ body > figure {
 	height: 100px;
 	min-height: 100px;
 	margin: 0 auto;
-	padding: 0 14px 0 10px;
+	padding: 0;
 	position: relative;
-	width: 495px;
+	width: 519px;
 	z-index: 991;
 }
 
@@ -216,7 +216,7 @@ body > figure {
 	display: table-cell;
 	position: relative;
 	height: 100%;
-	width: 138px;
+	width: 154px;
 }
 
 .blueDialog [data-npc] [data-anim] {
@@ -226,20 +226,21 @@ body > figure {
 	top: 0;
 	left: 0;
 	height: 100%;
-	width: 100%;
+	padding-left: 10px;
+	width: 138px;
 }
 
 .blueDialog .content {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	display: table-cell;
-	padding: 0 20px;
+	padding: 0 34px 0 20px;
 	-webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;  
-	width: 356px;
+	width: 380px;
 }
 
 .blueDialog .controls {
