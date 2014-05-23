@@ -157,9 +157,7 @@ $(function() {
 			enabled: false,
 			$elem: null,
 			offX: 0,
-			offY: 0,
-			initialX: 0,
-			initialY: 0
+			offY: 0
 		};
 
 	$('[data-npc="mapleadmin"]').life();
@@ -182,9 +180,6 @@ $(function() {
 
 		var elementOffsetX = drag.$elem.offset().left,
 			elementOffsetY = drag.$elem.offset().top;
-
-		drag.initialX = drag.$elem.position().left;
-		drag.initialY = drag.$elem.position().top;
 
 		drag.$elem.css({
 			position: 'fixed',

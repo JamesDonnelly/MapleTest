@@ -119,7 +119,8 @@ body > figure {
     -moz-user-select: none;
     -ms-user-select: none;
     -o-user-select: none;
-    user-select: none;  
+    user-select: none;
+    z-index: 989;
 }
 
 .minimap:before, .minimap:after {
@@ -169,7 +170,7 @@ body > figure {
 	background-image: url(../i/dialog/UtilDlgEx-c.png);
 	background-repeat: repeat-y;
 	display: none;
-	height: auto;
+	height: 100px;
 	min-height: 100px;
 	margin: 0 auto;
 	padding: 0 14px 0 10px;
